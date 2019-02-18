@@ -1,10 +1,11 @@
 # mongoms
 
 ## Overview
+A Simple implementation of a springboot service presenting a simple logging api to a mongodb. 
 
 ## run
 
-runmongo script starts up the db container a linked mongoexpress image to manage it and the mongoms microservice with the api for loggin to mongo.
+runmongo script starts up the db container, a linked mongoexpress image to manage it ,the mongoms microservice with the api for loggin to mongo and a few osfamicroservice instances to exercise it.
 Note that you need docker-compose installed.
 
     @RequestMapping(method = RequestMethod.GET, value = "/logentry")
