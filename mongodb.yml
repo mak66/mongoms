@@ -25,4 +25,4 @@ services:
     image: osfamongoms
     restart: "no"
     ports:
-      - 8090:8080
+      - 8089:8080
