@@ -17,6 +17,7 @@ public class LogEntry {
     private LocalDateTime eventTime;
     private String service;
     private String data;
+    private String result;
     private int time2Live;
 
     public String getId() {
@@ -57,6 +58,14 @@ public class LogEntry {
 
     public void setTime2Live(int time2Live) {
         this.time2Live = time2Live;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
     
 }

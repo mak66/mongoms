@@ -23,15 +23,17 @@ public class LogEntryController {
         return logEntryRepo.findAll();
     }
     
-    @GetMapping("/logentry/{service}/{data}/{time2live}")
+    @GetMapping("/logentry/{service}/{data}/{time2live}/{result}")
     public String save(@PathVariable("service") String service,
                        @PathVariable("data") String data,
-                       @PathVariable("time2live") String time2live){
+                       @PathVariable("time2live") String time2live,
+                       @PathVariable("result") String result){
         
         LogEntry le = new LogEntry();
         le.setData(data);
         le.setService(service);
         le.setTime2Live(Integer.parseInt(time2live));
+        le.setResult(result);
         
         logEntryRepo.save(le);
         
@@ -40,10 +42,10 @@ public class LogEntryController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/logentry")
-    public String save(@RequestBody LogEntry product) {
-        logEntryRepo.save(product);
+    public String save(@RequestBody LogEntry logentry) {
+        logEntryRepo.save(logentry);
 
-        return product.getId();
+        return logentry.getId();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/logentry/{id}")
@@ -73,6 +75,9 @@ public class LogEntryController {
             loge.setTime2Live(logentry.getTime2Live());
             if (logentry.getData() != null) {
                 loge.setData(logentry.getData());
+            }
+            if (logentry.getResult() != null) {
+                loge.setResult(logentry.getResult());
             }
             logEntryRepo.save(loge);
         }
