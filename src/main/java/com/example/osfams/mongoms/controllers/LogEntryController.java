@@ -26,7 +26,7 @@ public class LogEntryController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "/logentry/last5")
     public Iterable<LogEntry> logEntryLast5() {
-        return logEntryRepo.findTop5BOrderByEventTime();
+        return logEntryRepo.findTop5ByOrderByEventTimeDesc();
     }
     
     @GetMapping("/logentry/{service}/{data}/{time2live}/{result}")
