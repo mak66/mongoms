@@ -31,7 +31,7 @@ services:
     image: osfamicroservice
     restart: "no"
     ports:
-      - 8082:8090
+      - 8090:8090
     environment:
       - OSFAMS_SERVICE=upper
       - OSFAMS_TIME_TO_LIVE=5
