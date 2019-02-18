@@ -13,4 +13,6 @@ public interface LogEntryRepository extends CrudRepository<LogEntry, String> {
 
     @Override
     void delete(LogEntry deleted);
+    
+    List<LogEntry> findTop5BOrderByEventTime();
 }

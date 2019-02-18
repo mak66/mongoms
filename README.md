@@ -8,6 +8,7 @@ runmongo script starts up the db container a linked mongoexpress image to manage
 Note that you need docker-compose installedy
 
 @RequestMapping(method = RequestMethod.GET, value = "/logentry")
+@RequestMapping(method = RequestMethod.GET, value = "/logentry/last5")
 @GetMapping("/logentry/{service}/{data}/{time2live}/{result}")
 @RequestMapping(method = RequestMethod.DELETE, value = "/logentry/{id}")
 @RequestMapping(method = RequestMethod.PUT, value = "/logentry/{id}")

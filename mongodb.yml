@@ -26,3 +26,40 @@ services:
     restart: "no"
     ports:
       - 8089:8080
+
+  upperms:
+    image: osfamicroservice
+    restart: "no"
+    ports:
+      - 8082:8090
+    environment:
+      - OSFAMS_SERVICE=upper
+      - OSFAMS_TIME_TO_LIVE=5
+
+  reversedms:
+    image: osfamicroservice
+    restart: "no"
+    ports:
+      - 8083:8090
+    environment:
+      - OSFAMS_SERVICE=reversed
+      - OSFAMS_TIME_TO_LIVE=5
+
+  bracedms:
+    image: osfamicroservice
+    restart: "no"
+    ports:
+      - 8084:8090
+    environment:
+      - OSFAMS_SERVICE=braced
+      - OSFAMS_TIME_TO_LIVE=5
+
+  upperreversedms:
+    image: osfamicroservice
+    restart: "no"
+    ports:
+      - 8085:8090
+    environment:
+      - OSFAMS_SERVICE=upper
+      - OSFAMS_TIME_TO_LIVE=5
+      - OSFAMS_CHAINED_MS=reversedms:8090

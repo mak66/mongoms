@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.osfams.mongoms.models.LogEntry;
 import com.example.osfams.mongoms.repositories.LogEntryRepository;
+import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -22,8 +24,13 @@ public class LogEntryController {
     public Iterable<LogEntry> logEntry() {
         return logEntryRepo.findAll();
     }
+    @RequestMapping(method = RequestMethod.GET, value = "/logentry/last5")
+    public Iterable<LogEntry> logEntryLast5() {
+        return logEntryRepo.findTop5BOrderByEventTime();
+    }
     
     @GetMapping("/logentry/{service}/{data}/{time2live}/{result}")
+    @CrossOrigin
     public String save(@PathVariable("service") String service,
                        @PathVariable("data") String data,
                        @PathVariable("time2live") String time2live,
