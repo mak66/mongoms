@@ -17,8 +17,8 @@ RUN ["ls", "target"]
 
 FROM openjdk:8-jdk-alpine
 
-EXPOSE 8090
-ARG JAR_FILE=target/OSFAMicroService-0.0.1-SNAPSHOT.jar
+EXPOSE 8089
+ARG JAR_FILE=target/mongoms-0.0.1-SNAPSHOT.jar
 
 COPY --from=builder ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
