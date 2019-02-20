@@ -25,7 +25,9 @@ services:
     image: osfamongoms
     restart: "no"
     ports:
-      - 8089:8080
+      - 8089:8089
+    environment:
+      - OSFAMS_SERVER_PORT=8089
 
   upperms:
     image: osfamicroservice
@@ -35,31 +37,39 @@ services:
     environment:
       - OSFAMS_SERVICE=upper
       - OSFAMS_TIME_TO_LIVE=10
+      - OSFAMS_SERVER_PORT=8090
+      - OSFAMS_LOGGING_URL=http://mongoms:8089/logentry
 
   reversedms:
     image: osfamicroservice
     restart: "no"
     ports:
-      - 8083:8090
+      - 8083:8083
     environment:
       - OSFAMS_SERVICE=reversed
       - OSFAMS_TIME_TO_LIVE=10
+      - OSFAMS_SERVER_PORT=8083
+      - OSFAMS_LOGGING_URL=http://mongoms:8089/logentry
 
   bracedms:
     image: osfamicroservice
     restart: "no"
     ports:
-      - 8084:8090
+      - 8084:8084
     environment:
       - OSFAMS_SERVICE=braced
       - OSFAMS_TIME_TO_LIVE=10
+      - OSFAMS_SERVER_PORT=8084
+      - OSFAMS_LOGGING_URL=http://mongoms:8089/logentry
 
   upperreversedms:
     image: osfamicroservice
     restart: "no"
     ports:
-      - 8085:8090
+      - 8085:8085
     environment:
       - OSFAMS_SERVICE=upper
       - OSFAMS_TIME_TO_LIVE=10
-      - OSFAMS_CHAINED_MS=reversedms:8090
+      - OSFAMS_CHAINED_MS=reversedms:8083
+      - OSFAMS_SERVER_PORT=8085
+      - OSFAMS_LOGGING_URL=http://mongoms:8089/logentry
