@@ -23,4 +23,4 @@ Note that you need docker-compose installed.
 
 mongo express on 8081
 
-mongo ms on 8089
+mongo ms on 8089 by default but can change by specifying -e OSFAMS_SERVER_PORT=whatever
